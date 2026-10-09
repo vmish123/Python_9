@@ -47,6 +47,10 @@ class Calculator(QWidget):
         try:
             result = str(eval(expression))
             self.result.setText(result)
+        except ZeroDivisionError:
+            self.expression.clear()
+            self.result.setText("Деление на ноль невозможно")
+            return
         except Exception:
             self.expression.clear()
             self.result.clear()
